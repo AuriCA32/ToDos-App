@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>My To-Dos</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	{% load static %}
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="{% static "todoListApp/index/images/icons/favicon.ico"%}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static "todoListApp/index/vendor/bootstrap/css/bootstrap.min.css"%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static "todoListApp/index/fonts/font-awesome-4.7.0/css/font-awesome.min.css"%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static "todoListApp/index/vendor/animate/animate.css"%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static "todoListApp/index/vendor/select2/select2.min.css"%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static "todoListApp/index/vendor/perfect-scrollbar/perfect-scrollbar.css"%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static "todoListApp/index/css/util.css"%}">
+	<link rel="stylesheet" type="text/css" href="{% static "todoListApp/index/css/main.css"%}">
+	<link rel="stylesheet" type="text/css" href="{% static "todoListApp/index/css/modal.css"%}">
+<!--===============================================================================================-->
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-table100">
+			<div class="wrap-table100">
+				<div class="table100">
+					<table>
+						<thead>
+							<tr class="table100-head">
+								<th class="column1">Tarea</th>
+								<th class="column2">Detalles</th>
+								<th class="column3">Fecha de creación</th>
+								<th class="column4">Status</th>
+								<th class="column5"></th>
+								<th class="column6"></th>
+							</tr>
+						</thead>
+						<tbody>
+								<tr>
+									<td class="column3">
+										<a href="/create" class="btn btn-info" data-toggle="modal"><span>Add new To-Do</span></a>
+									</td>
+								</tr>
+								{% for task in tasklist %}
+								<tr>
+									<td class="column1">{{task.title}}</td>
+									<td class="column2">{{task.body}}</td>
+									<td class="column3">{{task.creation_date}}</td>
+									{% if task.status %}
+										<td class="column4">Pendiente</td>
+									{% else %}
+										<td class="column4">Completada</td>
+									{% endif %}
+									<td class="column5">
+										<button class="btn btn-success" name="editTask" formnovalidate="" type="submit" onclick="$('input#sublist').click();">Editar</button>
+									</td>
+									<td class="column6">
+										<button class="btn btn-danger" name="deleteTask" formnovalidate="" type="submit" onclick="$('input#sublist').click();">Eliminar</button>
+									</td>
+								</tr>
+								{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+<!--===============================================================================================-->	
+<script src="todoListApp/index/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="todoListApp/index/vendor/bootstrap/js/popper.js"></script>
+	<script src="todoListApp/index/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="todoListApp/index/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="todoListApp/index/js/main.js"></script>
+
+</body>
+</html>
