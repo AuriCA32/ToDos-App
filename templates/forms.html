@@ -1,0 +1,96 @@
+{% block head %}
+	<title>{{ pageTitle }}</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	{% load static %}
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="{% static "todoListApp/signup/images/icons/favicon.ico"%}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static "todoListApp/signup/vendor/bootstrap/css/bootstrap.min.css"%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static "todoListApp/signup/fonts/font-awesome-4.7.0/css/font-awesome.min.css"%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static "todoListApp/signup/fonts/iconic/css/material-design-iconic-font.min.css"%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static "todoListApp/signup/vendor/animate/animate.css"%}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{% static "todoListApp/signup/vendor/css-hamburgers/hamburgers.min.css"%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static "todoListApp/signup/vendor/animsition/css/animsition.min.css"%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static "todoListApp/signup/vendor/select2/select2.min.css"%}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{% static "todoListApp/signup/vendor/daterangepicker/daterangepicker.css"%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static "todoListApp/signup/css/util.css"%}">
+	<link rel="stylesheet" type="text/css" href="{% static "todoListApp/signup/css/main.css"%}">
+<!--===============================================================================================-->
+{% endblock head %}
+{%block body %}	    
+<body>
+	    
+        {% if messages %}
+        <ul class="messages">
+        {% for message in messages %}
+		<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+		<!-- <li>{{ message }}</li> -->
+        {% endfor %}
+        </ul>
+        {% endif %}
+
+	<div class="limiter">
+		<div class="container-login100" style="background-image: url('{% static "todoListApp/signup/images/bg-01.jpg" %}');">
+			<div class="wrap-login100">
+				<form class="login100-form validate-form" method="post">
+					{% csrf_token %}
+					<span class="login100-form-logo">
+						<i class="zmdi zmdi-landscape"></i>
+					</span>
+
+					<span class="login100-form-title p-b-34 p-t-27">
+						{{pageTitle}}
+                    </span>
+					<div class="wrap-input100 validate-input">
+						<input class="input100" type="text" name="title" placeholder="Title for your new task">
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input">
+						<input class="input100" type="text" name="body" placeholder="Type in the details of your new task">
+						<span class="focus-input100"></span>
+                    </div>
+                    
+                    <select name="status">
+                            <option value="1">Pending</option>
+                            <option value="0">Completed</option>
+                    </select>
+
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn">
+							Continue
+						</button>
+					</div>
+                </form>
+                <div class="text-center">
+                        <h1><a class="txt1" href="/" class="text-center">Back to index</a></h1>
+                </div>
+            </div>
+        </div>
+    </div>
+	
+	<div id="dropDownSelect1"></div>
+
+</body>
+{% endblock body %}
+<!--===============================================================================================-->	
+	<script src="todoListApp/signup/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="todoListApp/signup/vendor/bootstrap/js/popper.js"></script>
+	<script src="todoListApp/signup/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="todoListApp/signup/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="todoListApp/signup/js/main.js"></script>
+
+</body>
+</html>
