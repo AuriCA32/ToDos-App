@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'todoListApp'
 ]
 
 MIDDLEWARE = [
@@ -78,7 +79,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'todoapp_db',
         'USER': 'todoList',
-        'PASSWORD': 'todoList123',
+        'PASSWORD': "todolist",
         'HOST': 'localhost',
         'PORT': 5432,
     }    

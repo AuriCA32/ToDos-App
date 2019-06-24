@@ -3,14 +3,13 @@ sudo -u postgres dropdb todoapp_db >> /dev/null
 sudo -u postgres dropuser todoList >> /dev/null
 sudo -u postgres createuser todoList
 sudo -u postgres createdb todoapp_db
+echo "Created database and management user in postgres"
 sudo -u postgres psql << EOF
-alter user todoList with encrypted password 'todoList123';
-alter role todoList set client_encoding to 'utf8';
-alter role todoList set default_transaction_isolation to 'read committed';
-alter role todoList set timezone to 'utc';
-alter role todoList createdb;
+alter user todoList with encrypted password 'todolist';
 grant all privileges on database todoapp_db to todoList ;\q
 EOF
+echo "Granted privileges on database to user"
 
+echo "Eliminating past migrations, if any"
 # Quitar migraciones pasadas e inicializar el manejador de la BD
-rm -r tourappAPI/migrations >> /dev/null
+rm -r todoListApp/migrations >> /dev/null
