@@ -3,42 +3,51 @@ from .models import Todo
 from django.urls import reverse_lazy
 from django.views import generic
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
-
-class SignUp(generic.CreateView):
-    form_class = UserCreationForm
-    success_url = reverse_lazy('login')
-    template_name = 'index.html'
+def SignUp(request):
+    if request.method == 'POST':
+        f = UserCreationForm(request.POST)
+        if f.is_valid():
+            f.save()
+            messages.success(request, 'Account created successfully, please log in')
+        else:
+            for field in f:
+                for error in field.errors:
+                    messages.error(request, error)
+            print(f)
+            print("User registration failed")
+    else:
+        f = UserCreationForm()
+    return render(request, 'signup.html', {'form': f})
 
 def LogIn(request):
-    if request.method == 'GET':
-        return render(request, 'login.html')
     if request.method == 'POST':
-        form = AuthenticationForm(request=request, data=request.POST)
-        return HttpResponseRedirect('/menu')
-    """
-        if form.is_valid():
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password')
-            #user = authenticate(username=username, password=password)
-            #if user is not None:
-            #    print(user)
-                #login(request, user)
-                #return HttpResponseRedirect('/post/')
-            #else:
-            #    print('User not found')
+        f = AuthenticationForm(request=request, data=request.POST)
+        if f.is_valid():
+            username = f.cleaned_data.get('username')
+            password = f.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return HttpResponseRedirect('/')
+            else:
+                messages.error(request,'User does not exist in database.')
         else:
-            # If there were errors, we render the form with these
-            # errors
-            #return render(request, 'tilweb/login.html', {'form': form}) 
-    """
+            messages.error(request,'Please enter a correct username and password. Note that both fields may be case-sensitive.')
+    else: 
+        f = AuthenticationForm()
+    return render(request, 'login.html', {'form': f})
 
 def menu(request):
     return render(request, 'menu.html') 
 
 """
+@login_required(login_url='/login/')
 def index(request): #the index view
     todos = Todo.objects.all() #quering all todos with the object manager
     if request.method == "POST": #checking if the request method is a POST

@@ -1,35 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+
+{% block head %}
 	<title>Menu de Opciones</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	{% load static %}
 <!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="{% static "todoListApp/images/icons/favicon.ico"%}"/>
+	<link rel="icon" type="image/png" href="{% static "todoListApp/signup/images/icons/favicon.ico"%}"/>
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static "todoListApp/vendor/bootstrap/css/bootstrap.min.css"%}">
+	<link rel="stylesheet" type="text/css" href="{% static "todoListApp/signup/vendor/bootstrap/css/bootstrap.min.css"%}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static "todoListApp/fonts/font-awesome-4.7.0/css/font-awesome.min.css"%}">
+	<link rel="stylesheet" type="text/css" href="{% static "todoListApp/signup/fonts/font-awesome-4.7.0/css/font-awesome.min.css"%}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static "todoListApp/fonts/iconic/css/material-design-iconic-font.min.css"%}">
+	<link rel="stylesheet" type="text/css" href="{% static "todoListApp/signup/fonts/iconic/css/material-design-iconic-font.min.css"%}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static "todoListApp/vendor/animate/animate.css"%}">
+	<link rel="stylesheet" type="text/css" href="{% static "todoListApp/signup/vendor/animate/animate.css"%}">
 <!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="{% static "todoListApp/vendor/css-hamburgers/hamburgers.min.css"%}">
+	<link rel="stylesheet" type="text/css" href="{% static "todoListApp/signup/vendor/css-hamburgers/hamburgers.min.css"%}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static "todoListApp/vendor/animsition/css/animsition.min.css"%}">
+	<link rel="stylesheet" type="text/css" href="{% static "todoListApp/signup/vendor/animsition/css/animsition.min.css"%}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static "todoListApp/vendor/select2/select2.min.css"%}">
+	<link rel="stylesheet" type="text/css" href="{% static "todoListApp/signup/vendor/select2/select2.min.css"%}">
 <!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="{% static "todoListApp/vendor/daterangepicker/daterangepicker.css"%}">
+	<link rel="stylesheet" type="text/css" href="{% static "todoListApp/signup/vendor/daterangepicker/daterangepicker.css"%}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static "todoListApp/css/util.css"%}">
-	<link rel="stylesheet" type="text/css" href="{% static "todoListApp/css/main.css"%}">
+	<link rel="stylesheet" type="text/css" href="{% static "todoListApp/signup/css/util.css"%}">
+	<link rel="stylesheet" type="text/css" href="{% static "todoListApp/signup/css/main.css"%}">
 <!--===============================================================================================-->
-</head>
-<body>
-	    
+{% endblock head %}
+{%block body %}	    
         {% if messages %}
         <ul class="messages">
         {% for message in messages %}
@@ -39,7 +37,7 @@
         {% endif %}
 
 	<div class="limiter">
-		<div class="container-login100" style="background-image: url('{% static "todoListApp/images/bg-01.jpg" %}');">
+		<div class="container-login100" style="background-image: url('{% static "todoListApp/signup/images/bg-01.jpg" %}');">
 			<div class="wrap-login100">
 
                     <span class="login100-form-title p-b-34 p-t-27">
@@ -64,4 +62,4 @@
 	<div id="dropDownSelect1"></div>
 
 </body>
-</html>
+{% endblock body %}
