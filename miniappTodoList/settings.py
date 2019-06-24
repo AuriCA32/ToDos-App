@@ -78,8 +78,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'todoapp_db',
-        'USER': 'todoList',
-        'PASSWORD': "todolist",
+        'USER': 'todolist',
+        'PASSWORD': 'todolist',
         'HOST': 'localhost',
         'PORT': 5432,
     }    
