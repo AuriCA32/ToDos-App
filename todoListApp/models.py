@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils import timezone
 
-class TodoList(models.Model):
+class Todo(models.Model):
     PENDING = 1
     COMPLETED = 0
     STATUS_CHOICES = (

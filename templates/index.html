@@ -43,6 +43,7 @@
 			<div class="wrap-login100">
 				<form class="login100-form validate-form" method="post">
 					{% csrf_token %}
+					<!-- {{ form.as_p }} -->
 					<span class="login100-form-logo">
 						<i class="zmdi zmdi-landscape"></i>
 					</span>
@@ -57,12 +58,12 @@
 					</div>
 
 					<div class="wrap-input100 validate-input">
-						<input class="input100" type="password" name="pass" placeholder="contraseña">
+						<input class="input100" type="password" name="password1" placeholder="contraseña">
 						<span class="focus-input100" data-placeholder="&#xf191;"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input">
-							<input class="input100" type="password" name="pass2" placeholder="repetir contraseña">
+							<input class="input100" type="password" name="password2" placeholder="repetir contraseña">
 							<span class="focus-input100" data-placeholder="&#xf191;"></span>
 					</div>
 
@@ -70,7 +71,7 @@
 						<button class="login100-form-btn">
 							Registrar usuario
 						</button>
-					</div>
+					</div> 
 				</form>
 				<div class="text-center">
 						<h1><a class="txt1" href="/login" class="text-center">Iniciar Sesion</a></h1>
