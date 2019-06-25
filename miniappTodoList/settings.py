@@ -84,6 +84,17 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': 5432,
     }    
+    'todolist-django-app': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd7r05m7e6jtaju',
+        'USER': 'blydhkctqpxbjg',
+        'PASSWORD': 'df638d693d206f8a66bbe3c2d0401e5d97581f54e351f5e4632a8cd45f9a3bdd',
+        'HOST': 'ec2-50-16-197-244.compute-1.amazonaws.com',
+        'PORT': '5432',
+        'OPTIONS': {
+            'connect_timeout': None,
+        }
+    }
 }
 
 
