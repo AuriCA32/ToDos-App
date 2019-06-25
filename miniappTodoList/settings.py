@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'miniappTodoList.wsgi.application'
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+    'todolist-app': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'todoapp_db',
         'USER': 'todolist',
@@ -85,7 +85,7 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': 5432,
     },
-    'todolist-app': {
+    'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'd7r05m7e6jtaju',
         'USER': 'blydhkctqpxbjg',
