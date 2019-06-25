@@ -42,6 +42,7 @@ li a:hover:not(.active) {
   <li><a class="active" href="/">Inicio</a></li>
   {% if user.is_authenticated %}
   <li><a href="/create">Crear tarea</a></li>
+  <li style="float:right"><a style="color:rgb(129, 253, 150);">{{user.username}}</a></li>
   <li style="float:right"><a href="/logout">Cerrar sesión</a></li>
   {% else %}
   <li style="float:right"><a href="/login">Iniciar sesión</a></li>

@@ -80,7 +80,16 @@ def editTask(request):
                 for error in field.errors:
                     e = field.label+": "+error
                     messages.error(request, e)
-    return render(request, 'forms.html', {'form': f, 'pageTitle': "Editar tarea", 'type' : 1})
+    try:
+        form2 = {
+            'title' : 1 if (instance.title!=None and instance.title!="") else 0,
+            'body'  : 1 if (instance.body!=None and instance.body!="") else 0,
+            'status' : 1 if instance.status==1 else 0,
+        }
+    except:
+        form2 = {}
+    print(form2)
+    return render(request, 'forms.html', {'form': f, 'pageTitle': "Editar tarea", 'type' : 1, 'form2' : form2})
 
 @login_required(login_url='/login/')
 def deleteTask(request):

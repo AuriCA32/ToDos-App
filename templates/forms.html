@@ -58,28 +58,33 @@
                     {% if type %}
                     <div class="wrap-input100 validate-input">
                             <p class="input100">TÍTULO</p>
-                            {% if form.title %}
+                            {% if form2.title %}
                             <input class="input100" type="text" name="title" placeholder="{{form.title}}">
                             {% else %}
-                            <input class="input100" type="text" name="title" placeholder="Título de la nueva tarea">
+                            <input class="input100" type="text" name="title" placeholder="Campo de título está vacio">
                             {% endif%}
                             <span class="focus-input100"></span>
                         </div>
     
                         <div class="wrap-input100 validate-input">
                             <p class="input100">DETALLES</p>
-                            {% if form.body %}
+                            {% if form2.body %}
                             <input class="input100" type="text" name="body" placeholder="{{form.body}}">
                             {% else %}
-                            <input class="input100" type="text" name="body" placeholder="Detalles de la nueva tarea">
+                            <input class="input100" type="text" name="body" placeholder="Campo de detalles está vacío">
                             {% endif%}
                             <span class="focus-input100"></span>
                         </div>
                         <p class="input100">STATUS</p>
                         <div class="container-login100-form-btn">
                             <select class="custom-select" name="status">
+                                {% if form2.status %}
                                 <option class="custom-select-sm" value="1">Pendiente</option>
                                 <option class="custom-select-sm" value="0">Completada</option>
+                                {% else %}
+                                <option class="custom-select-sm" value="0">Completada</option>
+                                <option class="custom-select-sm" value="1">Pendiente</option>
+                                {% endif %}
                             </select>
                         </div>
                         <div class="wrap-input100 validate-input">
