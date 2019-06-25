@@ -42,9 +42,6 @@ def LogIn(request):
         f = AuthenticationForm()
     return render(request, 'login.html', {'form': f})
 
-def menu(request):
-    return render(request, 'menu.html') 
-
 @login_required(login_url='/login/')
 def index(request): #the index view
     TaskList = Todo.objects.all().order_by('-creation_date')
