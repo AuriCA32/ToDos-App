@@ -84,7 +84,7 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': 5432,
     },
-    'todolist-django-app': {
+    'todolist-app': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'd7r05m7e6jtaju',
         'USER': 'blydhkctqpxbjg',
