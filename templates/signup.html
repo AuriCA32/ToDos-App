@@ -34,11 +34,15 @@
 <body>
 
 	{% if messages %}
-    <ul class="messages">
-    	{% for message in messages %}
-		<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    <ul class="input100">
+    	
+		<li{% if message.tags %} class="{{ message.tags }}"{% endif %} style="color:white">
+		{% for message in messages %}	
+		<p>{{ message }}</p>
+		{% endfor %}
+		</li>
 		<!-- <li>{{ message }}</li> -->
-        {% endfor %}
+        
     </ul>
     {% endif %}
 	

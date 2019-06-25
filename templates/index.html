@@ -62,17 +62,16 @@
 											<p>
 												<a href="/mark_{{task.id}}" style="font-size:70%"><span>Marcar como completada</span></a> 		
 											</p>
-											<!-- <a href="/edit_{{task.id}}" class="btn btn-success"><span>Editar</span></a>  -->
 										</td>
 									{% else %}
 										<td class="column4">Completada</td>
 									
 										<td class="column5">
-											<!-- <a href="/edit_{{task.id}}" class="btn btn-success"><span>Editar</span></a>  -->
 										</td>
 									{% endif %}
 									<td class="column6">
-										<a href="/delete_{{task.id}}" class="btn btn-danger"><span>Eliminar</span></a> 
+										<a href="/edit_{{task.id}}" class="btn btn-info" style="font-size: 85%"><span>Editar</span></a>
+										<a href="/delete_{{task.id}}" class="btn btn-danger" style="font-size: 85%"><span>Eliminar</span></a> 
 									</td>
 								</tr>
 								{% endfor %}

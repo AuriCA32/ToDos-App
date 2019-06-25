@@ -48,7 +48,7 @@ def LogOut(request):
 
 @login_required(login_url='/login/')
 def index(request): #the index view
-    TaskList = Todo.objects.all().order_by('-creation_date')
+    TaskList = Todo.objects.all().order_by('id')
     return render(request, 'index.html', { 'tasklist' : TaskList})
 
 @login_required(login_url='/login/')
@@ -78,7 +78,8 @@ def editTask(request):
         else:
             for field in f:
                 for error in field.errors:
-                    messages.error(request, error)
+                    e = field.label+": "+error
+                    messages.error(request, e)
     return render(request, 'forms.html', {'form': f, 'pageTitle': "Editar tarea", 'type' : 1})
 
 @login_required(login_url='/login/')

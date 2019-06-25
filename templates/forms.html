@@ -3,7 +3,7 @@
 {% block content %}
 <title>{{ pageTitle }}</title>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 	{% load static %}
 <!--===============================================================================================-->	
 	<link rel="icon" type="image/png" href="{% static "todoListApp/signup/images/icons/favicon.ico"%}"/>
@@ -25,16 +25,21 @@
 	<link rel="stylesheet" type="text/css" href="{% static "todoListApp/signup/vendor/daterangepicker/daterangepicker.css"%}">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{% static "todoListApp/signup/css/util.css"%}">
-	<link rel="stylesheet" type="text/css" href="{% static "todoListApp/signup/css/main.css"%}">
+    <link rel="stylesheet" type="text/css" href="{% static "todoListApp/signup/css/main.css"%}">
 <!--===============================================================================================-->   
+
 <body>
 	    
         {% if messages %}
-        <ul class="messages">
-        {% for message in messages %}
-		<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-		<!-- <li>{{ message }}</li> -->
-        {% endfor %}
+        <ul class="input100">
+            
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %} style="color:white">
+            {% for message in messages %}	
+            <p>{{ message }}</p>
+            {% endfor %}
+            </li>
+            <!-- <li>{{ message }}</li> -->
+            
         </ul>
         {% endif %}
 
@@ -54,9 +59,9 @@
                     <div class="wrap-input100 validate-input">
                             <p class="input100">TÍTULO</p>
                             {% if form.title %}
-                            <input class="input100" type="text" name="body" placeholder="{{form.title}}">
+                            <input class="input100" type="text" name="title" placeholder="{{form.title}}">
                             {% else %}
-                            <input class="input100" type="text" name="body" placeholder="">
+                            <input class="input100" type="text" name="title" placeholder="Título de la nueva tarea">
                             {% endif%}
                             <span class="focus-input100"></span>
                         </div>
@@ -66,21 +71,19 @@
                             {% if form.body %}
                             <input class="input100" type="text" name="body" placeholder="{{form.body}}">
                             {% else %}
-                            <input class="input100" type="text" name="body" placeholder="">
+                            <input class="input100" type="text" name="body" placeholder="Detalles de la nueva tarea">
                             {% endif%}
                             <span class="focus-input100"></span>
                         </div>
                         <p class="input100">STATUS</p>
-                        <select name="status">
-                                {% if form.status %}
-                                <option value="1">Pendiente</option>
-                                <option value="0">Completada</option>
-                                {% else %}
-                                <option value="0">Completada</option>
-                                <option value="1">Pendiente</option>
-                                {% endif %}
-                        </select>
-    
+                        <div class="container-login100-form-btn">
+                            <select class="custom-select" name="status">
+                                <option class="custom-select-sm" value="1">Pendiente</option>
+                                <option class="custom-select-sm" value="0">Completada</option>
+                            </select>
+                        </div>
+                        <div class="wrap-input100 validate-input">
+                        </div>
                         <div class="container-login100-form-btn">
                             <button class="login100-form-btn">
                                 Continue
@@ -98,11 +101,15 @@
                     </div>
                     
                     <p class="input100">¿Cuál es el status de la tarea?</p>
-                    <select name="status">
-                            <option value="1">Pendiente</option>
-                            <option value="0">Completada</option>
-                    </select>
-
+                    <div class="container-login100-form-btn">
+                        <select class="custom-select" name="status">
+                            <option class="custom-select-sm" value="1">Pendiente</option>
+                            <option class="custom-select-sm" value="0">Completada</option>
+                        </select>
+                    </div>
+                    <div class="wrap-input100 validate-input">
+                    </div>
+                    <p> </p>
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn">
 							Continuar
@@ -128,7 +135,8 @@
 <!--===============================================================================================-->
 	<script src="todoListApp/signup/vendor/select2/select2.min.js"></script>
 <!--===============================================================================================-->
-	<script src="todoListApp/signup/js/main.js"></script>
+    <script src="todoListApp/signup/js/main.js"></script>
+    
 
 {% endblock %}
 </html>
