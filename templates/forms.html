@@ -50,26 +50,65 @@
 					<span class="login100-form-title p-b-34 p-t-27">
 						{{pageTitle}}
                     </span>
+                    {% if type %}
+                    <div class="wrap-input100 validate-input">
+                            <p class="input100">TÍTULO</p>
+                            {% if form.title %}
+                            <input class="input100" type="text" name="body" placeholder="{{form.title}}">
+                            {% else %}
+                            <input class="input100" type="text" name="body" placeholder="">
+                            {% endif%}
+                            <span class="focus-input100"></span>
+                        </div>
+    
+                        <div class="wrap-input100 validate-input">
+                            <p class="input100">DETALLES</p>
+                            {% if form.body %}
+                            <input class="input100" type="text" name="body" placeholder="{{form.body}}">
+                            {% else %}
+                            <input class="input100" type="text" name="body" placeholder="">
+                            {% endif%}
+                            <span class="focus-input100"></span>
+                        </div>
+                        <p class="input100">STATUS</p>
+                        <select name="status">
+                                {% if form.status %}
+                                <option value="1">Pendiente</option>
+                                <option value="0">Completada</option>
+                                {% else %}
+                                <option value="0">Completada</option>
+                                <option value="1">Pendiente</option>
+                                {% endif %}
+                        </select>
+    
+                        <div class="container-login100-form-btn">
+                            <button class="login100-form-btn">
+                                Continue
+                            </button>
+                    </div>
+                    {% else %}
 					<div class="wrap-input100 validate-input">
-						<input class="input100" type="text" name="title" placeholder="Title for your new task">
+						<input class="input100" type="text" name="title" placeholder="Título de la nueva tarea">
 						<span class="focus-input100"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input">
-						<input class="input100" type="text" name="body" placeholder="Type in the details of your new task">
+						<input class="input100" type="text" name="body" placeholder="Detalles de la nueva tarea">
 						<span class="focus-input100"></span>
                     </div>
                     
+                    <p class="input100">¿Cuál es el status de la tarea?</p>
                     <select name="status">
-                            <option value="1">Pending</option>
-                            <option value="0">Completed</option>
+                            <option value="1">Pendiente</option>
+                            <option value="0">Completada</option>
                     </select>
 
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn">
-							Continue
+							Continuar
 						</button>
-					</div>
+                    </div>
+                    {% endif %}
                 </form>
                 <div class="text-center">
                         <h1><a class="txt1" href="/" class="text-center">Back to index</a></h1>

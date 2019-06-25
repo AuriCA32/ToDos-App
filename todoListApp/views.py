@@ -5,7 +5,7 @@ from django.views import generic
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import TodoForm
@@ -47,7 +47,7 @@ def menu(request):
 
 @login_required(login_url='/login/')
 def index(request): #the index view
-    TaskList = Todo.objects.all()
+    TaskList = Todo.objects.all().order_by('-creation_date')
     return render(request, 'index.html', { 'tasklist' : TaskList})
 
 @login_required(login_url='/login/')
@@ -58,10 +58,38 @@ def createTask(request):
             f.save()
             return HttpResponseRedirect('/')
         else:
-            print(f)
             for field in f:
                 for error in field.errors:
                     messages.error(request, error)
     else: 
         f = TodoForm()
     return render(request, 'forms.html', {'form': f, 'pageTitle': "Crear nueva tarea"})
+
+@login_required(login_url='/login/')
+def editTask(request):
+    given_id = int(request.path.split("_")[1])
+    instance = get_object_or_404(Todo,id=given_id)
+    f = TodoForm(request.POST or None, instance=instance)
+    if request.method=="POST":
+        if f.is_valid():
+            f.save()
+            return HttpResponseRedirect('/')
+        else:
+            for field in f:
+                for error in field.errors:
+                    messages.error(request, error)
+    return render(request, 'forms.html', {'form': f, 'pageTitle': "Editar tarea", 'type' : 1})
+
+@login_required(login_url='/login/')
+def deleteTask(request):
+    given_id = int(request.path.split("_")[1])
+    get_object_or_404(Todo,id=given_id).delete()
+    return HttpResponseRedirect('/')
+
+@login_required(login_url='/login/')
+def markCompleteTask(request):
+    given_id = int(request.path.split("_")[1])
+    instance = get_object_or_404(Todo,id=given_id)
+    instance.status=0
+    instance.save()
+    return HttpResponseRedirect('/')

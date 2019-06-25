@@ -42,7 +42,7 @@
 						</thead>
 						<tbody>
 								<tr>
-									<td class="column3">
+									<td class="column2">
 										<a href="/create" class="btn btn-info" data-toggle="modal"><span>Add new To-Do</span></a>
 									</td>
 								</tr>
@@ -52,15 +52,20 @@
 									<td class="column2">{{task.body}}</td>
 									<td class="column3">{{task.creation_date}}</td>
 									{% if task.status %}
-										<td class="column4">Pendiente</td>
+										<td class="column4">
+											<p>Pendiente</p>
+											<p>
+												<a href="/mark_{{task.id}}" style="font-size:70%"><span>Marcar como completada</span></a> 		
+											</p>
+										</td>
 									{% else %}
 										<td class="column4">Completada</td>
 									{% endif %}
 									<td class="column5">
-										<button class="btn btn-success" name="editTask" formnovalidate="" type="submit" onclick="$('input#sublist').click();">Editar</button>
+										<a href="/edit_{{task.id}}" class="btn btn-success"><span>Editar</span></a> 
 									</td>
 									<td class="column6">
-										<button class="btn btn-danger" name="deleteTask" formnovalidate="" type="submit" onclick="$('input#sublist').click();">Eliminar</button>
+										<a href="/delete_{{task.id}}" class="btn btn-danger"><span>Eliminar</span></a> 
 									</td>
 								</tr>
 								{% endfor %}

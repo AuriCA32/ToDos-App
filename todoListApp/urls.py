@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path,re_path
 
 from . import views
 
@@ -9,4 +9,7 @@ urlpatterns = [
     path('menu/', views.menu, name='menu'),
     path('', views.index, name='index'),
     path('create/', views.createTask, name='create'),
+    re_path(r'edit_*', views.editTask, name='edit'),
+    re_path(r'delete_*', views.deleteTask, name='delete'),
+    re_path(r'mark_*', views.markCompleteTask, name='markcomplete'),
 ]
