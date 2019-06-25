@@ -1,0 +1,511 @@
+/* basic reset */
+*, *:before, *:after {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+/* app */
+html {
+    font-size: 100%;
+}
+body {
+    background: #b1f6cb;
+    font-family: 'Open Sans',sans-serif;
+}
+/* super basic grid structure */
+.container {
+    width: 1000px;
+    margin: 200px auto;
+    background: #ffffff;
+    padding: 20px 0;
+    -webkit-box-shadow: 0 0 2px rgba(0,0,0,0.2);
+            box-shadow: 0 0 2px rgba(0,0,0,0.2);
+}
+.row {
+    display: block;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    clear: both;
+    overflow: hidden;
+}
+.half {
+    width: 50%;
+    float: left;
+}
+.content {
+    background: #fff;
+}
+/* logo */
+.taskCont h1 {
+    font-family: 'Rokkitt', sans-serif;
+    color: #666;
+    text-align: center;
+    font-weight: 400;
+    margin: 0;
+}
+.tagline {
+    margin-top: -10px;
+    text-align: center;
+    padding: 5px 20px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #777; 
+}
+/* inputs */
+.inputContainer {
+    height: 60px;
+    border-top: 1px solid #e5e5e5;
+    position: relative;
+    overflow: hidden;
+}
+.inputContainer.last {
+    border-bottom: 1px solid #e5e5e5;
+    margin-bottom: 20px;
+}
+.inputContainer.half.last.right {
+    border-left: 1px solid #efefef;
+}
+.taskCont input[type="date"], .taskCont input[type="text"], .taskCont select {
+    height: 100%;
+    width: 100%;
+    padding: 0 20px;
+    position: absolute;
+    top: 0;
+    vertical-align: middle;
+    display: inline-block;
+    border: none;
+    border-radius: none;
+    font-size: 13px;
+    color: #777;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    -webkit-transition: background 0.3s;
+            transition: background 0.3s;
+}
+.taskCont input[type="date"] {
+    cursor: pointer;
+}
+.taskCont input[type="date"]:focus, .taskCont input[type="text"]:focus, .taskCont select:focus {
+    outline: none;
+    background: #ecf0f1;
+}
+.taskCont ::-webkit-input-placeholder {
+    color: lightgrey;
+    font-weight: normal;
+    -webkit-transition: all 0.3s;
+            transition: all 0.3s;
+}
+.taskCont ::-moz-placeholder {
+    color: lightgrey;
+    font-weight: normal;
+    transition: all 0.3s;
+}
+.taskCont ::-ms-input-placeholder {
+    color: lightgrey;
+    font-weight: normal;
+    transition: all 0.3s;
+}
+.taskCont input:-moz-placeholder {
+    color: lightgrey;
+    font-weight: normal;
+    transition: all 0.3s;
+}
+.taskCont input:focus::-webkit-input-placeholder {
+    color: #95a5a6;
+    font-weight: bold;
+}
+.taskCont input:focus::-moz-input-placeholder {
+    color: #95a5a6;
+    font-weight: bold;
+}
+.inputContainer label {
+    padding: 5px 20px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #777;
+    display: block;
+    position: absolute;
+}
+.taskCont button {
+    font-family: 'Open Sans', sans-serif;
+    //background: transparent;
+    border-radius: 2px;
+    border: none;
+    outline: none;
+    height: 50px;
+    font-size: 14px;
+    color: #fff;
+    cursor: pointer;
+    text-transform: uppercase;
+    position: relative;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    padding-left: 30px;
+    padding-right: 15px;
+}
+.icon {
+    position: absolute;
+    top: 30%;
+    left: 10px;
+    font-size: 20px;
+}
+.taskAdd {
+    background: #444;
+    padding-left: 31px;
+}
+.taskAdd:hover {
+    background: #303030;
+}
+.taskDelete {
+    background: #e74c3c;
+    padding-left: 30px;
+}
+.taskDelete:hover {
+    background: #c0392b;
+}
+
+.taskReady{
+    background: forestgreen;
+}
+
+.taskReady:hover{
+    background: green;
+}
+
+.taskPending{
+    background: rgb(231, 231, 41);
+}
+
+.taskPending:hover{
+    background: yellow;
+}
+/* task styles */
+.taskList {
+    list-style: none;
+    padding: 0 20px;
+}
+.taskItem {
+    border-top: 1px solid #e5e5e5;
+    padding: 15px 0;
+    color: #777;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+}
+.taskList .taskItem:nth-child(even) {
+    background: #fcfcfc;
+}
+.taskCheckbox {
+    margin-right: 1em;
+}
+.complete-true {
+    margin-left: 40px;
+    color: #16a085;
+}
+
+.complete-false{
+    margin-left: 40px;
+    color: rgb(231, 231, 41);
+}
+.taskList .taskDate {
+    color: #95a5a6;
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    display: block;
+    margin-left: 41px;
+}
+.fa-calendar {
+    margin-right: 10px;
+    font-size: 16px;
+}
+[class*='category-'] {
+    display: inline-block;
+    font-size: 10px;
+    background: #444;
+    vertical-align: middle;
+    color: #fff;
+    padding: 10px;
+    width: 75px;
+    text-align: center;
+    border-radius: 2px;
+    float: right;
+    font-weight: normal;
+    text-transform: uppercase;
+    margin-right: 20px;
+}
+.category- {
+    background: transparent;
+}
+.category-Personal {
+    background: #2980b9;
+}
+.category-Work {
+    background: #8e44ad;
+}
+.category-School {
+    background: #f39c12;
+}
+.category-Cleaning {
+    background: #16a085;
+}
+.category-Other {
+    background: #d35400;
+}
+.taskCont footer {
+    text-align: center;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #777;
+}
+.taskCont footer a {
+    color: #f39c12;
+}
+/* custom checkboxes */
+.taskCheckbox {
+    -webkit-appearance: none;
+            appearance: none;
+    -webkit-transition: all 0.3s;
+            transition: all 0.3s;
+    display: inline-block;
+    cursor: pointer;
+    width: 19px;
+    height: 19px;
+    vertical-align: middle;
+}
+.taskCheckbox:focus {
+    outline: none;
+}
+.taskCheckbox:before, .taskCheckbox:checked:before {
+    font-family: 'FontAwesome';
+    color: #444;
+    font-size: 20px;
+    -webkit-transition: all 0.3s;
+            transition: all 0.3s;
+}
+.taskCheckbox:before {
+    content: '\f096';
+}
+.taskCheckbox:checked:before {
+    content: '\f14a';
+    color: #16a085;
+}
+
+.taskRadio{
+    -webkit-appearance: none;
+    appearance: none;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    display: inline-block;
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+    border-radius: 50% !important;
+}
+
+.taskCheckbox:focus {
+    outline: none;
+}
+
+.taskRadio:before {
+    content: '\f096';
+}
+
+.taskRadio:checked:before{
+    content: '\f14a';
+    color: #16a085;
+}
+
+.align{
+    display: flex;￼
+    justify-content: center;
+}
+/* custom select menu */
+.taskCategory {
+    -webkit-appearance: none;
+            appearance: none;
+    cursor: pointer;
+    padding-left: 16.5px; /*specific positioning due to difficult behavior of select element*/
+    background: #fff;
+}
+.selectArrow {
+    position: absolute;
+    z-index: 10;
+    top: 35%;
+    right: 0;
+    margin-right: 20px;
+    color: #777;
+    pointer-events: none;
+}
+.taskCategory option {
+    background: #fff;
+    border: none;
+    outline: none;
+    padding: 0 100px;
+}
+
+
+
+/*Menu*/
+
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:100,300,400,700);
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+}
+
+a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.menu-opener, .menu-opener:hover, .menu-opener.active, .menu-opener-inner, .menu-opener-inner::before, .menu-opener-inner::after, .menu, .menu.active {
+  -webkit-transition: 250ms all;
+  transition: 250ms all;
+}
+
+.menu-opener {
+  cursor: pointer;
+  height: 64px;
+  position: absolute;
+  top: 2%;
+  left: 1%;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 64px;
+}
+.menu-opener:hover, .menu-opener.active {
+  background: #f1c40f;
+}
+
+.menu-opener-inner {
+  background: #fff;
+  height: .5rem;
+  margin-left: .75rem;
+  margin-top: 1.75rem;
+  width: 2.5rem;
+}
+.menu-opener-inner::before, .menu-opener-inner::after {
+  background: white;
+  content: '';
+  display: block;
+  height: .5rem;
+  width: 2.5rem;
+}
+.menu-opener-inner::before {
+  -webkit-transform: translateY(-0.75rem);
+  -ms-transform: translateY(-0.75rem);
+  transform: translateY(-0.75rem);
+}
+.menu-opener-inner::after {
+  -webkit-transform: translateY(0.25rem);
+  -ms-transform: translateY(0.25rem);
+  transform: translateY(0.25rem);
+}
+.menu-opener-inner.active {
+  background: transparent;
+}
+.menu-opener-inner.active::before {
+  -webkit-transform: translateY(0rem) rotate(-45deg);
+  -ms-transform: translateY(0rem) rotate(-45deg);
+  transform: translateY(0rem) rotate(-45deg);
+}
+.menu-opener-inner.active::after {
+  -webkit-transform: translateY(-0.5rem) translateX(0rem) rotate(45deg);
+  -ms-transform: translateY(-0.5rem) translateX(0rem) rotate(45deg);
+  transform: translateY(-0.5rem) translateX(0rem) rotate(45deg);
+}
+
+.menu {
+  background: #f1c40f;
+  color: transparent;
+  height: 64px;
+  position: absolute;
+  top: 2%;
+  left: 1%;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 0rem;
+  z-index: -1;
+}
+.menu.active {
+  width: -webkit-calc(100% - 2rem);
+  width: calc(100% - 2rem);
+}
+.menu.active .menu-link {
+  color: white;
+}
+
+.menu-inner {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  height: 100%;
+  list-style-type: none;
+  margin: 0;
+  margin-left: 4rem;
+  padding: 0;
+}
+
+.menu-link {
+  color: transparent;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  font-size: 2rem;
+  font-weight: 100;
+  height: 100%;
+  text-align: center;
+  text-decoration: none;
+}
+.menu-link li {
+  margin: auto;
+}
+
+@media screen and (max-width: 768px) {
+  .menu {
+    height: auto;
+  }
+  .menu-inner {
+    display: block;
+  }
+  .menu-link {
+    padding: 10px 0;
+    font-size: 1.2em;
+  }
+  .menu.active {
+    width: -webkit-calc(100% - 0.5rem);
+    width: calc(100% - 0.5rem);
+  }
+}

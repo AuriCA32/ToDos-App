@@ -3,7 +3,7 @@ from .models import Todo
 from django.urls import reverse_lazy
 from django.views import generic
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login,logout
 from django.http import HttpResponseRedirect
 from django.shortcuts import render,get_object_or_404
 from django.contrib import messages
@@ -41,6 +41,10 @@ def LogIn(request):
     else: 
         f = AuthenticationForm()
     return render(request, 'login.html', {'form': f})
+
+def LogOut(request):
+    logout(request)
+    return HttpResponseRedirect("/")
 
 @login_required(login_url='/login/')
 def index(request): #the index view
@@ -80,8 +84,13 @@ def editTask(request):
 @login_required(login_url='/login/')
 def deleteTask(request):
     given_id = int(request.path.split("_")[1])
-    get_object_or_404(Todo,id=given_id).delete()
-    return HttpResponseRedirect('/')
+    try:
+        get_object_or_404(Todo,id=given_id).delete()
+        return HttpResponseRedirect('/')
+    except:
+        messages.error(request,"No valid task is selected, no task will be deleted.")
+        index(request)
+    
 
 @login_required(login_url='/login/')
 def markCompleteTask(request):
@@ -90,3 +99,7 @@ def markCompleteTask(request):
     instance.status=0
     instance.save()
     return HttpResponseRedirect('/')
+
+def error_404_view(request, exception):
+    data = {"name": "ThePythonDjango.com"}
+    return render(request,'404.html', data)

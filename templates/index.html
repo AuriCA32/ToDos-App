@@ -1,5 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'navbar.html' %}
+
+{% block content %}
 <head>
 	<title>My To-Dos</title>
 	<meta charset="UTF-8">
@@ -23,6 +24,7 @@
 	<link rel="stylesheet" type="text/css" href="{% static "todoListApp/index/css/modal.css"%}">
 <!--===============================================================================================-->
 </head>
+
 <body>
 	
 	<div class="limiter">
@@ -43,7 +45,7 @@
 						<tbody>
 								<tr>
 									<td class="column2">
-										<a href="/create" class="btn btn-info" data-toggle="modal"><span>Add new To-Do</span></a>
+										<a href="/create" class="btn btn-info" data-toggle="modal"><span>Crear Tarea</span></a>
 									</td>
 								</tr>
 								{% for task in tasklist %}
@@ -54,16 +56,21 @@
 									{% if task.status %}
 										<td class="column4">
 											<p>Pendiente</p>
+											
+										</td>
+										<td class="column5">
 											<p>
 												<a href="/mark_{{task.id}}" style="font-size:70%"><span>Marcar como completada</span></a> 		
 											</p>
+											<!-- <a href="/edit_{{task.id}}" class="btn btn-success"><span>Editar</span></a>  -->
 										</td>
 									{% else %}
 										<td class="column4">Completada</td>
+									
+										<td class="column5">
+											<!-- <a href="/edit_{{task.id}}" class="btn btn-success"><span>Editar</span></a>  -->
+										</td>
 									{% endif %}
-									<td class="column5">
-										<a href="/edit_{{task.id}}" class="btn btn-success"><span>Editar</span></a> 
-									</td>
 									<td class="column6">
 										<a href="/delete_{{task.id}}" class="btn btn-danger"><span>Eliminar</span></a> 
 									</td>
@@ -88,4 +95,4 @@
 	<script src="todoListApp/index/js/main.js"></script>
 
 </body>
-</html>
+{% endblock %}

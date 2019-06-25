@@ -6,6 +6,7 @@ from . import views
 urlpatterns = [
     path('signup/', views.SignUp, name='signup'),
     path('login/', views.LogIn, name='login'),
+    path('logout/', views.LogOut, name='logout'),
     path('', views.index, name='index'),
     path('create/', views.createTask, name='create'),
     re_path(r'edit_*', views.editTask, name='edit'),
