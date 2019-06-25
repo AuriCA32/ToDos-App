@@ -1,9 +1,13 @@
-### django postgresql heroku
-# To-Dos App
+#### django postgresql heroku
+# ToDos App
 
 ## Descripción
 
-To-Dos App se trata de una mini-aplicación desarrollada en Django 2.1 para el manejo de tareas (*TODOs*) por un conjunto de usuarios. Se incluyen las siguientes funcionalidades:
+ToDos App se trata de una mini-aplicación desarrollada en Django 2.1 para el manejo de tareas (*TODOs*) por un conjunto de usuarios.
+
+La aplicación está actualmente en Heroku: [Link de acceso](https://todo-app-o.herokuapp.com/).
+
+Se incluyen las siguientes funcionalidades:
 
 * Registrar un usuario.
 * Ingresar con un usuario existente.
