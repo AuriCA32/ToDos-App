@@ -28,6 +28,7 @@ def LogIn(request):
     if request.method == 'POST':
         f = AuthenticationForm(request=request, data=request.POST)
         if f.is_valid():
+            # Form is valid, try to authenticate user
             username = f.cleaned_data.get('username')
             password = f.cleaned_data.get('password')
             user = authenticate(username=username, password=password)
@@ -47,7 +48,7 @@ def LogOut(request):
     return HttpResponseRedirect("/")
 
 @login_required(login_url='/login/')
-def index(request): #the index view
+def index(request):
     TaskList = Todo.objects.all().order_by('id')
     return render(request, 'index.html', { 'tasklist' : TaskList})
 
@@ -68,11 +69,12 @@ def createTask(request):
 
 @login_required(login_url='/login/')
 def editTask(request):
+    # Find the instance with id in path and create form
     given_id = int(request.path.split("_")[1])
     instance = get_object_or_404(Todo,id=given_id)
     f = TodoForm(request.POST or None, instance=instance)
     if request.method=="POST":
-        if f.is_valid():
+        if f.is_valid(): 
             f.save()
             return HttpResponseRedirect('/')
         else:
@@ -80,6 +82,10 @@ def editTask(request):
                 for error in field.errors:
                     e = field.label+": "+error
                     messages.error(request, e)
+    # For rendering the template properly, form2 indicates the following:
+    #   title : 1 if title is not empty string, else 0.
+    #   body : 1 if body is not empty string, else 0.
+    #   status : 1 if status is pending (1), else 0.
     try:
         form2 = {
             'title' : 1 if (instance.title!=None and instance.title!="") else 0,
@@ -88,19 +94,13 @@ def editTask(request):
         }
     except:
         form2 = {}
-    print(form2)
     return render(request, 'forms.html', {'form': f, 'pageTitle': "Editar tarea", 'type' : 1, 'form2' : form2})
 
 @login_required(login_url='/login/')
 def deleteTask(request):
     given_id = int(request.path.split("_")[1])
-    try:
-        get_object_or_404(Todo,id=given_id).delete()
-        return HttpResponseRedirect('/')
-    except:
-        messages.error(request,"No valid task is selected, no task will be deleted.")
-        index(request)
-    
+    get_object_or_404(Todo,id=given_id).delete()
+    return HttpResponseRedirect('/')
 
 @login_required(login_url='/login/')
 def markCompleteTask(request):
@@ -109,7 +109,3 @@ def markCompleteTask(request):
     instance.status=0
     instance.save()
     return HttpResponseRedirect('/')
-
-def error_404_view(request, exception):
-    data = {"name": "ThePythonDjango.com"}
-    return render(request,'404.html', data)
